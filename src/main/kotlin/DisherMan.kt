@@ -2,10 +2,10 @@ package br.com.diogoritmos
 
 import br.com.diogoritmos.Dish.DishState
 
-class DisherMan {
-    private val fordDishes = mutableListOf<Dish>()
-    private val toyotaDishes = mutableListOf<Dish>()
-
+class DisherMan(
+    private val fordDishes: MutableList<Dish> = mutableListOf(),
+    private val toyotaDishes: MutableList<Dish> = mutableListOf()
+) {
     fun addDish(dish: Dish, priority: Boolean = false) {
         if (priority) {
             toyotaDishes.add(dish)

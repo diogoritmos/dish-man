@@ -3,14 +3,32 @@ package br.com.diogoritmos
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 fun main() {
-    val name = "Kotlin"
-    //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-    // to see how IntelliJ IDEA suggests fixing it.
-    println("Hello, " + name + "!")
+    val diogo = DisherMan()
 
-    for (i in 1..5) {
-        //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-        // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-        println("i = $i")
+    val plate = Dish("Plate")
+    val fork = Dish("Fork")
+    val knife = Dish("Knife")
+    val coffeeMaker = Dish("Coffee Maker")
+
+    diogo.addDish(plate)
+    diogo.addDish(fork)
+    diogo.addDish(knife)
+
+    var counter = 0
+
+    while (true) {
+        try {
+            diogo.doWork()
+            counter++
+
+            if (counter == 8) {
+                diogo.addDish(coffeeMaker, true)
+            }
+
+            Thread.sleep(100)
+        } catch (e: IllegalStateException) {
+            println("The job is done!")
+            break
+        }
     }
 }
